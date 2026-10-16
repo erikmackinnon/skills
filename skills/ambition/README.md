@@ -36,6 +36,7 @@ The rewritten prompt carries one rule into execution: *push past the first "impo
 - Inflate your task. "Deeper, not bigger" is the core test, and "this is already the right size" is a valid answer.
 - Role-play experts, give pep talks, or let the model grade its own work.
 - Write files into your project uninvited. It offers to save.
+- Publish, deploy or send anything off your machine unless you ask.
 
 ## Install
 
