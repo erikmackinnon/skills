@@ -17,15 +17,16 @@ Then it rewrites your task as a prompt and waits for your go-ahead.
 
 1. **Looks at the real material first:** code, data, logs, drafts. Its suggestions come from evidence, not guesses.
 2. **Works out what kind of task this is** (software, documents and presentations, research, writing or something else) and what the agent can actually do in your setup. It only proposes methods it can run.
-3. **Writes a short brief:**
+3. **Sets the aim with you.** It asks up to five quick calls that only you can make: what success means, what's off-limits, how far to reach. Each call comes with its own pick, and at least one direction call includes a *(reach)* option. Reply with picks like `1c 2a`, or just say **go**. Small or clear tasks skip this step.
+4. **Writes a short brief:**
    - **Outcome:** what you actually want to happen. Is there a more direct route, or one that stops this task coming back?
    - **Method:** what a top practitioner would do, starting from which raw material, with which real tools.
    - **Other fields:** one or two techniques borrowed from other disciplines. Methods, never role-play.
    - **Judge:** what other than you or the model will show it's right (a test, benchmark, holdout or real user).
    - **Target:** one harder goal, plus the constraint that's allowed to veto it.
    - **Gaps:** missing access or tools, and where the model is likely to be fluent but wrong.
-4. **Recommends one version.** It names the boldest option it rejected, the cost (including *your* review time), and the cheapest test that could kill the idea. Or it tells you the task is already the right size, and stops.
-5. **Rewrites your task as a prompt** with the judge, target, stopping rule and first checkpoint built in. Then it **waits for your go-ahead.**
+5. **Recommends one version.** It names the boldest option it rejected, the cost (including *your* review time), and the cheapest test that could kill the idea. Or it tells you the task is already the right size, and stops.
+6. **Rewrites your task as a prompt** with the judge, target, stopping rule and first checkpoint built in. Then it **waits for your go-ahead.**
 
 The rewritten prompt carries one rule into execution: *push past the first "impossible", never shrink scope silently, report the real measured result. An honest miss beats a faked hit.*
 

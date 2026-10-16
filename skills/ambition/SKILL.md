@@ -1,10 +1,10 @@
 ---
 name: ambition
-description: Help the user aim higher on a task before any work starts. Finds the real outcome, an expert-grade method, techniques from other fields, an outside judge and a harder target, then rewrites the task as a prompt and waits for approval. Use only when the user types /ambition, names the Ambition skill, or explicitly asks to make a task more ambitious. Never use it on your own initiative.
+description: Help the user aim higher on a task before any work starts. Finds the real outcome, an expert-grade method, techniques from other fields, an outside judge and a harder target. Checks a few key calls with the user, then rewrites the task as a prompt and waits for approval. Use only when the user types /ambition, names the Ambition skill, or explicitly asks to make a task more ambitious. Never use it on your own initiative.
 license: MIT
 metadata:
   author: Erik MacKinnon
-  version: "1.0.0"
+  version: "1.1.0"
   based-on: "Felix Rieseberg, How to be more ambitious: A tutorial for humans with models (2026)"
 ---
 
@@ -17,7 +17,7 @@ Before any work starts, help the user see a more ambitious version of their task
 - a judge that isn't you
 - a harder target
 
-Then you recommend one version, or say the task is already the right size. Finally you rewrite the task as a prompt and wait for the go-ahead.
+Before writing the brief, you ask the user a few calls that only they can make, so the brief starts from the right direction. Then you recommend one version, or say the task is already the right size. Finally you rewrite the task as a prompt and wait for the go-ahead.
 
 Here, ambition means **deeper and aimed at the real outcome, not bigger.** A more ambitious version changes the outcome, or how confident anyone can be in it. More deliverables, more agents or more pages aren't ambition. They're inflation, and they cost the user review time.
 
@@ -30,6 +30,8 @@ This skill is based on Felix Rieseberg's essay [How to be more ambitious: A tuto
 - The user names this skill, or explicitly asks to make a task more ambitious.
 
 Never start this on your own initiative. Don't begin the task itself until the user approves. The choice is part of the point: the user's sense of what's possible grows when they see the bigger version and decide on it themselves.
+
+If the user asks to skip the questions (for example "/ambition no questions" or "just go"), skip step 3.
 
 ## 1. Look before you answer
 
@@ -68,9 +70,59 @@ Propose only methods you can run, and name exactly what the user would need to p
 
 **Size.** A one-line fix gets a few lines in total. A week of work gets a real brief. If your context or tools are limited, do the minimum run: outcome, judge, target with its veto, the rewritten prompt, then wait.
 
-## 3. Write the brief
+## 3. Set the aim
 
-Keep each point to a few lines, or one line for a small task. State your assumptions instead of quizzing the user. Ask a question only if the answer would change your recommendation.
+Before writing the brief, ask the user the calls that would change it. Agents tend to treat their riskiest assumptions as settled. A short round of calls catches a wrong premise in seconds, before the user has to read a whole brief built on it. It's also where the user picks the bigger version for themselves.
+
+- **Ask after you've looked, never before.** Ask only about decisions, preferences, limits and facts only the user holds: their goal, their audience, what's off-limits, the budget, matters of taste. Never ask about something you could find by looking.
+- **Ask up to five calls, and zero is fine.** Ask only calls whose answer would change the brief. A small or already-clear task gets no calls; go straight to the brief.
+- **Make every call answerable with "go".** Give your pick and a one-clause reason. For an open question, give the assumption you'll use if the user skips it.
+- **Offer a reach.** When a call is about direction, include the most ambitious option you would seriously consider, and mark it *(reach)*.
+- **Keep the calls independent.** If one answer would change another call, ask only the first and settle the second in the brief.
+- **One round.** Add a second only if an answer opens a major new direction. The whole round should be readable in about 30 seconds.
+- **With no user to answer** (an automated or non-interactive run, or the user said to skip), take your own picks and list them as assumptions in the brief.
+
+Format:
+
+```
+**Setting the aim: <the task in one line>**
+Looked at: <what you inspected, in one line>
+
+**1. <Outcome | Method | Other fields | Judge | Target | Limits> · <short question>**
+   a) …   b) …   c) … *(reach)*
+   My pick: b, <one-clause reason>
+
+**2. <Area> · <open question>**
+   If you skip: <the assumption you'll use>
+
+Reply with picks (like `1c 2a`), your own words, or **go** to take mine.
+```
+
+For example, for "speed up our test suite":
+
+```
+**Setting the aim: speed up the test suite**
+Looked at: the test config, the last 20 CI runs (median 14 min), the 10 slowest tests
+
+**1. Outcome · Which wait matters most?**
+   a) Local runs while coding   b) CI before merge   c) Both, with no flaky reruns *(reach)*
+   My pick: b, because CI is where the 14 minutes hurt and local speed mostly follows
+
+**2. Limits · Can I change CI infrastructure?**
+   a) Test code only   b) CI config too (parallel runners, caching)
+   My pick: b, because most of the gain is in sharding and caching, not the tests
+
+**3. Target · How fast is worth it?**
+   If you skip: under 3 minutes, with no test removed or skipped
+
+Reply with picks (like `1c 2a`), your own words, or **go** to take mine.
+```
+
+Then wait for the reply before writing the brief.
+
+## 4. Write the brief
+
+Keep each point to a few lines, or one line for a small task. Build on the user's calls. Where they skipped a call or said "go", use your pick and say so. If something new comes up, state an assumption rather than starting another round of questions.
 
 1. **Outcome.** What does the user actually want to happen once this is done? Is there a version that gets there more directly, or that stops this task from coming back? If the thing they named is itself the point, say so and keep it. Examples: a patch someone is waiting to review, a deck a board asked for by name, a letter in their own voice.
 2. **Method.** What would the best practitioner in this field do that the user didn't ask for?
@@ -87,7 +139,7 @@ Keep each point to a few lines, or one line for a small task. State your assumpt
 5. **Target.** Set one specific goal harder than the user's, as a number or a pass/fail, and treat it as reachable. Name the constraint allowed to veto it, such as correctness, privacy, a public API or a deadline. A hard target without a veto rewards breaking something to hit the number. If no known method exists yet, the first goal is finding one, and the number comes after.
 6. **Gaps.** What access, data or tools are missing? Say what you'd install and what only the user can provide. Where are you likely to sound fluent but be wrong? Name the claims you won't make.
 
-## 4. Recommend one version
+## 5. Recommend one version
 
 - **Change at most two things:** the outcome, the method, or a borrowed technique. Keep everything else at the scale the user asked for. Changing all three at once is how a two-hour job turns into a research program.
 - **Name the boldest option you rejected,** in one line, and say why. Seeing it is part of how ambition grows, even when it's the wrong call today.
@@ -102,7 +154,7 @@ Before recommending, check it's not inflation:
 
 If any answer is no, cut that part.
 
-## 5. Rewrite the task, then wait
+## 6. Rewrite the task, then wait
 
 Rewrite the task as one self-contained prompt that a fresh agent could execute, in a fenced code block. It must include:
 
@@ -116,7 +168,7 @@ Rewrite the task as one self-contained prompt that a fresh agent could execute, 
 
 Then stop and ask for the go-ahead. Offer to save the brief and prompt to a file, but don't write any files unless asked. If the work calls for a particular deliverable (a deck, a chart, a document), name it in the prompt and confirm it with the user rather than producing it now.
 
-## 6. On go-ahead
+## 7. On go-ahead
 
 By default, carry out the rewritten prompt in this session.
 
@@ -128,8 +180,11 @@ If the user changes the plan, update the prompt and confirm it before you execut
 
 ## Reply format
 
+Your first reply is the **Setting the aim** round from step 3, unless there are no calls to make. The brief comes after the user answers:
+
 ```
 **Ambition: <the task in one line>**
+**Aim**: <the calls taken, e.g. "1c, 2b (yours); 3 skipped, assuming under 3 min">
 
 **Outcome**: …
 **Method**: …
@@ -141,7 +196,7 @@ If the user changes the plan, update the prompt and confirm it before you execut
 **Recommendation**: <one version, what changes and why>
 **Boldest option rejected**: …
 **Cost**: …
-**Riskiest assumption → cheapest probe**: …
+**Riskiest assumption**: … **Cheapest probe**: …
 
 **Rewritten prompt**
 <fenced code block>
