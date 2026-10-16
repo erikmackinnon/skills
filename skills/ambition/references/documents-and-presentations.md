@@ -4,7 +4,7 @@ Read this when the task is mostly office work: decks, reports, briefs, spreadshe
 
 ## Outcome
 
-Most business documents exist to produce a decision or an action. Ask what the meeting or the reader is supposed to *do* afterwards. Ambition can go up in steps; take the first step that fits the user's situation:
+Most business documents exist to produce a decision or an action. Ask what the meeting or the reader is supposed to *do* afterwards. Ambition goes up in steps. Aim for the highest step the user can own, and name the next one up:
 
 1. **Update the document.** Fill in the template with this period's numbers. This is the baseline.
 2. **Explain it.** Use the full underlying data to say what changed, why it changed, and what to do about it.

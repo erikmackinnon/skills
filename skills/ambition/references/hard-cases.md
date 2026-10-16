@@ -5,6 +5,7 @@ Read this when a call is hard. Typical situations:
 - a target could be faked
 - the "ambitious" version might just be bigger
 - you're unsure the task should grow at all
+- the target might be too timid
 
 ## Depth or inflation?
 
@@ -20,9 +21,9 @@ Real ambition changes the outcome, or how confident anyone can be in it. Inflati
 
 Depth often makes the output *smaller*: one validated finding instead of twelve charts.
 
-## When to stay small
+## When to keep the scope
 
-Recommending the task as written is correct when:
+Keeping the scope as written is correct when:
 
 - **The artifact is the commitment.** Someone is waiting on that specific patch, deck, letter or proof. Ask whether a different artifact would disappoint the person who requested it.
 - **The bigger outcome has no owner.** Nobody within reach can say yes to it. Label it a proposal and ship what the user can ship.
@@ -31,7 +32,19 @@ Recommending the task as written is correct when:
 - **Failure would be costly or irreversible,** and there's no judge.
 - **The task is genuinely trivial,** and speed is all it needs.
 
-Small doesn't mean timid. Even a small task can get a sharper judge or rawer input.
+Keeping the scope never means lowering the aim. Put the reach into depth: rawer input, a sharper judge, and a result an expert would learn from.
+
+## Depth or timidity?
+
+The more common failure is the opposite of inflation: the same work a plain request would get, just checked more carefully. Watch for:
+
+- **A target the obvious approach already meets.** If a competent plain attempt would hit it, it isn't a target.
+- **A correctness floor posing as a target.** "No errors" and "every value traceable" are requirements or vetoes.
+- **A "bold" option that only adds features.** A date picker, a dashboard or a settings panel is surface, not reach.
+- **The safe option as the default pick,** with the ambitious one offered as a stretch nobody takes.
+- **An easy hit.** If the target fell on the first try, it was too low. Say so and name the next level.
+
+The pinnacle is what the best in the field would call excellent. If the user needs 5 seconds, aim for 200 milliseconds.
 
 ## How hard targets get faked
 

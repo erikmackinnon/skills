@@ -4,7 +4,7 @@ Agent skills by [Erik MacKinnon](https://erikmackinnon.com). They follow the [Ag
 
 | Skill | What it does |
 |---|---|
-| [**Ambition**](skills/ambition/) | Before your agent starts building, it helps you aim higher. It sets the aim with a few quick calls, finds the real outcome, expert methods, an outside judge and a harder target, then rewrites your task as a prompt and waits for your go-ahead. Run it with `/ambition <task>`. |
+| [**Ambition**](skills/ambition/) | Before your agent starts building, it pushes you both to aim for the pinnacle. It sets the aim with a few quick calls, boldest version first, then finds the real outcome, expert methods, an outside judge, proof it's possible and a target that sounds unreasonable. Then it rewrites your task as a prompt and waits for your go-ahead. Run it with `/ambition <task>`. |
 
 ## Install
 
