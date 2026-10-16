@@ -4,7 +4,7 @@ description: Help the user aim higher on a task before any work starts. Finds th
 license: MIT
 metadata:
   author: Erik MacKinnon
-  version: "1.1.0"
+  version: "1.1.1"
   based-on: "Felix Rieseberg, How to be more ambitious: A tutorial for humans with models (2026)"
 ---
 
@@ -86,34 +86,48 @@ Format:
 
 ```
 **Setting the aim: <the task in one line>**
+
 Looked at: <what you inspected, in one line>
 
 **1. <Outcome | Method | Other fields | Judge | Target | Limits> · <short question>**
-   a) …   b) …   c) … *(reach)*
-   My pick: b, <one-clause reason>
+- a) …
+- b) …
+- c) … *(reach)*
+
+My pick: b, <one-clause reason>
 
 **2. <Area> · <open question>**
-   If you skip: <the assumption you'll use>
+
+If you skip: <the assumption you'll use>
 
 Reply with picks (like `1c 2a`), your own words, or **go** to take mine.
 ```
+
+Keep this layout exactly. Each option gets its own bulleted line, never several options on one line. Leave a blank line between the parts shown, so the round renders cleanly both as Markdown and as plain text. Lines without a blank line between them run together into one paragraph in Markdown.
 
 For example, for "speed up our test suite":
 
 ```
 **Setting the aim: speed up the test suite**
+
 Looked at: the test config, the last 20 CI runs (median 14 min), the 10 slowest tests
 
 **1. Outcome · Which wait matters most?**
-   a) Local runs while coding   b) CI before merge   c) Both, with no flaky reruns *(reach)*
-   My pick: b, because CI is where the 14 minutes hurt and local speed mostly follows
+- a) Local runs while coding
+- b) CI before merge
+- c) Both, with no flaky reruns *(reach)*
+
+My pick: b, because CI is where the 14 minutes hurt and local speed mostly follows
 
 **2. Limits · Can I change CI infrastructure?**
-   a) Test code only   b) CI config too (parallel runners, caching)
-   My pick: b, because most of the gain is in sharding and caching, not the tests
+- a) Test code only
+- b) CI config too (parallel runners, caching)
+
+My pick: b, because most of the gain is in sharding and caching, not the tests
 
 **3. Target · How fast is worth it?**
-   If you skip: under 3 minutes, with no test removed or skipped
+
+If you skip: under 3 minutes, with no test removed or skipped
 
 Reply with picks (like `1c 2a`), your own words, or **go** to take mine.
 ```
@@ -184,19 +198,30 @@ Your first reply is the **Setting the aim** round from step 3, unless there are 
 
 ```
 **Ambition: <the task in one line>**
+
 **Aim**: <the calls taken, e.g. "1c, 2b (yours); 3 skipped, assuming under 3 min">
 
 **Outcome**: …
+
 **Method**: …
+
 **Other fields**: …
+
 **Judge**: …
+
 **Target**: … (veto: …)
+
 **Gaps**: …
 
 **Recommendation**: <one version, what changes and why>
+
 **Boldest option rejected**: …
+
 **Cost**: …
-**Riskiest assumption**: … **Cheapest probe**: …
+
+**Riskiest assumption**: …
+
+**Cheapest probe**: …
 
 **Rewritten prompt**
 <fenced code block>
